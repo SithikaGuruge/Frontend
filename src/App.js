@@ -1,23 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Login from "./Components/login";
+import About from "./Components/about";
+import Dashboard from "./Components/dashboard";
+import Employee from "./Components/Employee/Employee";
+import Admin from "./Components/Admin/Admin";
+import ManUI from "./Components/ManUI/ManUI";
+import EmployeeUI from "./Components/EmpUI/EmployeeUI";
+import SupervisorUI from "./Components/SupervisorUI/SupervisorUI";
+import PersonalInfo from "./Components/EmpUI/PersonalInfo";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+        <div>
+          <Routes>
+            <Route exact path="/" element={<Dashboard />}></Route>
+            <Route path="/login" element={<Login />}></Route>
+            <Route path="/about" element={<About />}></Route>
+            <Route path="/login/Employee" element={<Employee />}></Route>
+            <Route path="/login/Admin" element={<Admin />}></Route>
+            <Route path="/login/Employee/ManUI" element={<ManUI />}></Route>
+            <Route
+              path="/login/Employee:username"
+              element={<EmployeeUI />}
+            ></Route>
+            <Route
+              path="/login/Employee/SupervisorUI"
+              element={<SupervisorUI />}
+            ></Route>
+            <Route
+              path="/login/Employee/EmployeeUI/PersonalInfo"
+              element={<PersonalInfo />}
+            ></Route>
+            <Route path="*" element={<h1>Not Found</h1>}></Route>
+          </Routes>
+        </div>
+      </Router>
     </div>
   );
 }
