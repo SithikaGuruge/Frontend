@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const PersonalInfo = () => {
@@ -6,7 +7,7 @@ const PersonalInfo = () => {
   const [record, setRecord] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/users")
+    fetch("http://localhost:5000/api/personalInfo")
       .then((response) => response.json())
       .then((data) => {
         setColumn(Object.keys(data[0]));
@@ -17,6 +18,13 @@ const PersonalInfo = () => {
 
   return (
     <div>
+      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div className="container-fluid">
+          <Link to="/login/Employee" className="navbar-brand">
+            Logout
+          </Link>
+        </div>
+      </nav>
       <h1>Personal Informations</h1>
       {record.map((record, i) => (
         <div className="d-flex justify-content-center align-items-center gradient-bg bg-primary vh-100">

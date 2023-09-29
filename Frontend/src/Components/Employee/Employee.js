@@ -1,17 +1,54 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Employee.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import axios from "axios";
 
 const Employee = () => {
   const navigate = useNavigate();
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  var foundElement;
+  const [username, setUsername] = useState();
+  const [password, setPassword] = useState();
+  const [record, setRecord] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/api/userLogin")
+      .then((response) => response.json())
+      .then((data) => {
+        setRecord(data);
+      })
+      .catch((error) => console.error("Error fetching data2:", error));
+  }, []);
+
+  function check(username, password) {
+    foundElement = record.find((element) => {
+      return element.Employee_ID === username && element.Password === password;
+    });
+
+    return foundElement;
+  }
+
+  function sendToken() {
+    fetch("http://localhost:5000/api/send-variable", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ username: foundElement.Employee_ID }),
+    })
+      .then((data) => {
+        console.log("success");
+      })
+      .catch((error) => {
+        console.log("error");
+      });
+  }
 
   function handleSubmit(event) {
     event.preventDefault();
-    if (username === "username" && password === "password") {
-      navigate(`/login/Employee:${username}`);
+    if (check(username, password)) {
+      sendToken();
+      navigate(`/login/Employee:${foundElement.Job_Title_ID}`);
     } else {
       alert("Login Failed");
     }
