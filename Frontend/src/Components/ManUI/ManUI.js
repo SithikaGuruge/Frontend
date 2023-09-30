@@ -30,7 +30,7 @@ const ManUI = () => {
             <ul className="navbar-nav ml-auto">
               <li className="nav-item">
                 <Link
-                  to="/login/Employee/EmployeeUI/PersonalInfo"
+                  to="/login/Employee/ManUI/AddEmployee"
                   className="nav-link"
                 >
                   Add Employee
@@ -38,7 +38,7 @@ const ManUI = () => {
               </li>
               <li className="nav-item">
                 <Link
-                  to="/login/Employee/ManUI/ViewEditPI"
+                  to="/login/Employee/EmployeeUI/PersonalInfo"
                   className="nav-link"
                 >
                   View Employee
@@ -46,7 +46,7 @@ const ManUI = () => {
               </li>
               <li className="nav-item">
                 <Link
-                  to="/login/Employee/ManUI/request-leave"
+                  to="/login/Employee/EmployeeUI/PersonalInfo"
                   className="nav-link"
                 >
                   View My Details
