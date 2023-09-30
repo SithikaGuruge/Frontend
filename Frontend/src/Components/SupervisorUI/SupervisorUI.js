@@ -33,7 +33,7 @@ const SupervisorUI = () => {
                   to="/login/Employee/EmployeeUI/PersonalInfo"
                   className="nav-link"
                 >
-                  Add Employee
+                  View Leaves Informations
                 </Link>
               </li>
               <li className="nav-item">
@@ -45,10 +45,7 @@ const SupervisorUI = () => {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link
-                  to="/login/Employee/ManUI/request-leave"
-                  className="nav-link"
-                >
+                <Link to="/login/Employee/" className="nav-link">
                   View My Details
                 </Link>
               </li>

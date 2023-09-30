@@ -2,7 +2,6 @@ import React from "react";
 import { useNavigate, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./EmpUI.css";
-import PersonalInfo from "./PersonalInfo";
 
 const EmployeeUI = () => {
   const navigate = useNavigate();
