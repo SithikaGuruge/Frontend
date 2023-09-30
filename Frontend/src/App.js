@@ -13,6 +13,7 @@ import PersonalInfo from "./Components/EmpUI/PersonalInfo";
 import AdminUI from "./Components/Admin/AdminUi";
 import AccountantUI from "./Components/Accountant/AccUI";
 
+import EditPI from "./Components/ManUI/EditPI";
 function App() {
   return (
     <div className="App">
@@ -46,6 +47,11 @@ function App() {
               element={<PersonalInfo />}
             ></Route>
             <Route path="/login/Admin/AdminUI" element={<AdminUI />}></Route>
+
+            <Route
+              path="/login/Employee/ManUI/EditPI"
+              element={<EditPI />}
+            ></Route>
             <Route path="*" element={<h1>Not Found</h1>}></Route>
           </Routes>
         </div>

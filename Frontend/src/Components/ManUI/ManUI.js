@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import bootsrap from "bootstrap/dist/css/bootstrap.min.css";
 import { useNavigate } from "react-router-dom";
-import PersonalInfo from "../EmpUI/PersonalInfo";
 
 const ManUI = () => {
   const navigate = useNavigate();
@@ -39,7 +38,7 @@ const ManUI = () => {
               </li>
               <li className="nav-item">
                 <Link
-                  to="/login/Employee/ManUI/request-leave"
+                  to="/login/Employee/ManUI/ViewEditPI"
                   className="nav-link"
                 >
                   View Employee

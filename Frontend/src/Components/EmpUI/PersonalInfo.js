@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const PersonalInfo = () => {
   const [column, setColumn] = useState([]);
   const [record, setRecord] = useState([]);
+  var edit = false;
+  const navigate = useNavigate();
+  const goBack = () => {
+    navigate(-1);
+  };
 
   useEffect(() => {
     fetch("http://localhost:5000/api/personalInfo")
@@ -25,27 +30,75 @@ const PersonalInfo = () => {
           </Link>
         </div>
       </nav>
-      <h1>Personal Informations</h1>
-      {record.map((record, i) => (
-        <div className="d-flex justify-content-center align-items-center gradient-bg bg-primary vh-100">
-          <tr key={i}>
-            <h6>Employee ID : {record.Employee_ID}</h6>
-            <h6>Name : {record.Name}</h6>
-            <h6>Organization Name :{record.Organization_Name}</h6>
 
-            <h6>
-              Birthdate : {new Date(record.Birthdate).toLocaleDateString()}
-            </h6>
-            <h6>Marital Status : {record.Marital_status}</h6>
-            <h6>
-              Emergency Contact Number : {record.Emergency_contact_Number}
-            </h6>
-            <h6>Status Type : {record.Status_Type}</h6>
-            <h6>Job Title : {record.Job_Title}</h6>
-            <h6>Supervisor_Name : {record.Supervisor_Name}</h6>
-          </tr>
+      <div className="d-flex flex-column align-items-center gradient-bg bg-primary vh-100">
+        <h1 style={{ marginBottom: "20px", marginTop: "20px" }}>
+          Personal Informations
+        </h1>
+        {record.map((record, i) => (
+          <div
+            style={{
+              border: "2px solid black",
+              padding: "20px",
+              marginTop: "50px",
+              marginBottom: "50px",
+              borderRadius: "10px",
+              width: "45%",
+              display: "flex",
+              flexDirection: "column", // Align children vertically
+              alignItems: "center", // Center children horizontally
+              // Center children horizontally
+            }}
+          >
+            <tr key={i}>
+              <h5>Employee ID : {record.Employee_ID}</h5>
+              <h5>Name : {record.Name}</h5>
+              <h5>Organization Name :{record.Organization_Name}</h5>
+              <h5>
+                Birthdate : {new Date(record.Birthdate).toLocaleDateString()}
+              </h5>
+              <h5>Marital Status : {record.Marital_status}</h5>
+              <h5>
+                Emergency Contact Number : {record.Emergency_contact_Number}
+              </h5>
+              <h5>Status Type : {record.Status_Type}</h5>
+              <h5>Job Title : {record.Job_Title}</h5>
+              {record.Supervisor_Name !== null && (
+                <h5>Supervisor_Name: {record.Supervisor_Name}</h5>
+              )}
+              {record.Job_Title === "HR_Manager" && (edit = true)}
+            </tr>
+          </div>
+        ))}
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <button
+            onClick={goBack}
+            type="button"
+            className="btn btn-primary"
+            style={{
+              color: "white",
+              fontSize: "16px",
+            }}
+          >
+            Back
+          </button>
+
+          {edit && (
+            <Link to="/login/Employee/ManUI/EditPI">
+              <button
+                className="btn btn-primary"
+                style={{
+                  color: "white",
+                  fontSize: "16px",
+                  marginLeft: "50px",
+                }}
+              >
+                Edit
+              </button>
+            </Link>
+          )}
         </div>
-      ))}
+      </div>
 
       {column == null && <p>Loading....</p>}
     </div>
