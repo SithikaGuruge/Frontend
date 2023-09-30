@@ -24,6 +24,35 @@ db.connect((err) => {
   }
 });
 
+//Get Added employee
+app.post("/api/employee/addEmployee", (req, res) => {
+  db.query(
+    "INSERT INTO employee (Employee_ID, Organization_Registration_Number, Name, Birthdate, Emergency_contact_Number, Marital_status, Supervisor_ID, Status_ID, Job_Title_ID, Pay_Grade_ID) VALUES (?,?,?,?,?,?,?,?,?,?)",
+    [
+      req.body.employeeId,
+      req.body.organizationId,
+      req.body.name,
+      req.body.birthday,
+      req.body.contactNumber,
+      req.body.maritalStatus,
+      req.body.supervisorId,
+      req.body.statusID,
+      req.body.jobTitleId,
+      req.body.payGradeId,
+    ],
+    (err, rows, fields) => {
+      if (err) {
+        console.error("Error querying MySQL:", err);
+        res.status(500).json({ error: "Internal server error" });
+        return;
+      } else {
+        console.log(rows);
+        res.json(rows);
+      }
+    }
+  );
+});
+
 //Get the token from the frontend and send it to the backend
 app.post("/api/send-variable", (req, res) => {
   token = req.body.username;
