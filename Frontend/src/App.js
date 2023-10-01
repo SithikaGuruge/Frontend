@@ -13,6 +13,9 @@ import PersonalInfo from "./Components/EmpUI/PersonalInfo";
 import AdminUI from "./Components/Admin/AdminUi";
 import AccountantUI from "./Components/Accountant/AccUI";
 import AddEmployee from "./Components/ManUI/AddEmployee";
+import EmployeeInfo from "./Components/ManUI/EmployeeInfo";
+import ViewEmployee from "./Components/ManUI/ViewEmployee";
+import EditEmployee from "./Components/ManUI/EditEmployee";
 
 import EditPI from "./Components/ManUI/EditPI";
 function App() {
@@ -56,6 +59,18 @@ function App() {
             <Route
               path="/login/Employee/ManUI/AddEmployee"
               element={<AddEmployee />}
+            ></Route>
+            <Route
+              path="/login/Employee/ManUI/EmployeeInfo"
+              element={<EmployeeInfo />}
+            ></Route>
+            <Route
+              path="/login/Employee/ManUI/ViewEmployee"
+              element={<ViewEmployee />}
+            ></Route>
+            <Route
+              path="/login/Employee/ManUI/EditEmployee"
+              element={<EditEmployee />}
             ></Route>
             <Route path="*" element={<h1>Not Found</h1>}></Route>
           </Routes>
