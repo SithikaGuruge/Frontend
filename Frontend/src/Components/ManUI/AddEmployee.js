@@ -157,7 +157,7 @@ const AddEmployee = () => {
           </tr>
           <tr>
             <label className="mb-3">
-              Organization ID:
+              Organization Name:
               <select
                 value={organizationDict.organizationId}
                 onChange={(e) =>
@@ -215,7 +215,7 @@ const AddEmployee = () => {
           </tr>
           <tr>
             <label className="mb-3">
-              Job Title ID:
+              Job Title:
               <select
                 value={jobTitleDict.jobTitleId}
                 onChange={(e) => setJobTitleId(jobTitleDict[e.target.value])}
@@ -232,7 +232,7 @@ const AddEmployee = () => {
           </tr>
           <tr>
             <label className="mb-3">
-              Status ID:
+              Status:
               <select
                 value={statusDict.statusID}
                 onChange={(e) => setStatusID(statusDict[e.target.value])}
@@ -249,7 +249,7 @@ const AddEmployee = () => {
           </tr>
           <tr>
             <label className="mb-3">
-              Pay Grade ID:
+              Pay Grade:
               <select
                 value={payGradeDict.payGradeId}
                 onChange={(e) => setPayGradeId(payGradeDict[e.target.value])}
