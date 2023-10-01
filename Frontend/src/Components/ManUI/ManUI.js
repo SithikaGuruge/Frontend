@@ -11,6 +11,9 @@ const ManUI = () => {
   const handleAddEmployee = () => {
     navigate("/login/Employee/ManUI/AddEmployee");
   };
+  const handleEmployeeInfo = () => {
+    navigate("/login/Employee/ManUI/EmployeeInfo");
+  };
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -41,10 +44,10 @@ const ManUI = () => {
               </li>
               <li className="nav-item">
                 <Link
-                  to="/login/Employee/EmployeeUI/PersonalInfo"
+                  to="/login/Employee/ManUI/EmployeeInfo"
                   className="nav-link"
                 >
-                  View Employee
+                  View Employees
                 </Link>
               </li>
               <li className="nav-item">
@@ -79,7 +82,7 @@ const ManUI = () => {
         class="button-with-icon"
         onClick={handleViewPersonalInfo}
       >
-        View Personal Info
+        View My Details
       </button>
       <button
         type="button"
@@ -87,6 +90,13 @@ const ManUI = () => {
         onClick={handleAddEmployee}
       >
         Add Employee
+      </button>
+      <button
+        type="button"
+        class="button-with-icon"
+        onClick={handleEmployeeInfo}
+      >
+        View Employees
       </button>
     </div>
   );

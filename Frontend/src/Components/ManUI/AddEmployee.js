@@ -1,6 +1,11 @@
 import React, { useEffect, useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 const AddEmployee = () => {
+  const navigate = useNavigate();
+  const goBack = () => {
+    navigate(-1);
+  };
   const formRef = useRef(null);
   const [employeeId, setEmployeeId] = useState("");
   const [organizationId, setOrganizationId] = useState("");
@@ -72,8 +77,10 @@ const AddEmployee = () => {
 
   return (
     <div>
-      <h1>Add Employee</h1>
-      <div className="d-flex flex-column align-items-center justify-content-center gradient-bg bg-primary vh-100 text-center p-5">
+      <div className="d-flex flex-column align-items-center gradient-bg bg-primary vh-100">
+        <h1 style={{ marginBottom: "20px", marginTop: "20px" }}>
+          Personal Informations
+        </h1>
         <form onSubmit={handleSubmit} ref={formRef}>
           <tr>
             <label className="mb-3">
@@ -211,7 +218,25 @@ const AddEmployee = () => {
               </select>
             </label>
           </tr>
-          <button className="btn btn-primary" type="submit" value="Submit">
+          <button
+            onClick={goBack}
+            type="button"
+            className="btn btn-primary"
+            style={{
+              color: "white",
+              fontSize: "16px",
+              marginRight: "50px",
+              marginTop: "20px",
+            }}
+          >
+            Back
+          </button>
+          <button
+            className="btn btn-primary"
+            type="submit"
+            value="Submit"
+            style={{ marginTop: "20px" }}
+          >
             Submit
           </button>
         </form>
