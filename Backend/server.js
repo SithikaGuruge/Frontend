@@ -40,7 +40,21 @@ app.post("/api/employee/addEmployee", (req, res) => {
       req.body.jobTitleId,
       req.body.payGradeId,
     ],
-    (err, rows, fields) => {
+    (err, rows) => {
+      if (err) {
+        console.error("Error querying MySQL:", err);
+        res.status(500).json({ error: "Internal server error" });
+        return;
+      } else {
+        console.log(rows);
+        res.json(rows);
+      }
+    }
+  );
+  db.query(
+    "Insert into user_account (Employee_ID, Password) values (?,?)",
+    [req.body.employeeId, req.body.employeeId + "@123"],
+    (err, rows) => {
       if (err) {
         console.error("Error querying MySQL:", err);
         res.status(500).json({ error: "Internal server error" });
