@@ -79,7 +79,7 @@ const EmployeeUI = () => {
           Request Leave
         </button>
         <button type="button" class="button-with-icon" onClick={handleBack}>
-          Back
+          Log Out
         </button>
       </div>
     </div>

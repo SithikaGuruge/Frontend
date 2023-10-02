@@ -84,6 +84,19 @@ const AddEmployee = () => {
     });
   };
 
+  function clearDetails() {
+    setEmployeeId("");
+    setOrganizationId("");
+    setName("");
+    setBirthday("");
+    setContactNumber("");
+    setMaritalStatus("");
+    setSupervisorId(null);
+    setStatusID("");
+    setJobTitleId("");
+    setPayGradeId("");
+  }
+
   useEffect(() => {
     if (formSubmitted) {
       fetch("http://localhost:5000/api/employee/addEmployee", {
@@ -112,17 +125,8 @@ const AddEmployee = () => {
         .catch((error) => {
           console.log("Data not sent to serve");
         });
+      clearDetails();
       setFormSubmitted(false);
-      setEmployeeId("");
-      setOrganizationId("");
-      setName("");
-      setBirthday("");
-      setContactNumber("");
-      setMaritalStatus("");
-      setSupervisorId(null);
-      setStatusID("");
-      setJobTitleId("");
-      setPayGradeId("");
     }
   }, [formSubmitted]);
 
@@ -303,6 +307,20 @@ const AddEmployee = () => {
             style={{ marginTop: "20px" }}
           >
             Submit
+          </button>
+
+          <button
+            onClick={clearDetails}
+            type="button"
+            className="btn btn-primary"
+            style={{
+              color: "white",
+              fontSize: "16px",
+              marginLeft: "50px",
+              marginTop: "20px",
+            }}
+          >
+            Clear
           </button>
         </form>
       </div>
