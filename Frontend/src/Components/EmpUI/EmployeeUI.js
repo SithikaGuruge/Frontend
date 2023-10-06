@@ -10,7 +10,7 @@ const EmployeeUI = () => {
   };
 
   const handleRequestLeave = () => {
-    navigate("request-leave");
+    navigate("/login/Employee/EmployeeUI/request-leave");
   };
 
   const handleBack = () => {

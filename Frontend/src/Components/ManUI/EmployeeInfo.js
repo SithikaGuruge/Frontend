@@ -25,7 +25,7 @@ const EmployeeInfo = () => {
         <h1 style={{ marginBottom: "20px", marginTop: "20px" }}>
           Employee Informations
         </h1>
-        {record.map((record, i) => (
+        {record.map((record) => (
           <div
             style={{
               border: "2px solid black",
@@ -40,61 +40,59 @@ const EmployeeInfo = () => {
               // Center children horizontally
             }}
           >
-            <tr key={i}>
-              <h5>Employee ID : {record.Employee_ID}</h5>
-              <h5>Name : {record.Name}</h5>
-              <Link
-                to="/login/Employee/ManUI/ViewEmployee"
-                style={{ color: "white" }}
-              >
-                <button
-                  className="btn btn-success"
-                  onClick={() => {
-                    fetch("http://localhost:5000/api/send-employee-id", {
-                      method: "POST",
-                      headers: {
-                        "Content-Type": "application/json",
-                      },
-                      body: JSON.stringify({ Employee_ID: record.Employee_ID }),
+            <h5>Employee ID : {record.Employee_ID}</h5>
+            <h5>Name : {record.Name}</h5>
+            <Link
+              to="/login/Employee/ManUI/ViewEmployee"
+              style={{ color: "white" }}
+            >
+              <button
+                className="btn btn-success"
+                onClick={() => {
+                  fetch("http://localhost:5000/api/send-employee-id", {
+                    method: "POST",
+                    headers: {
+                      "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ Employee_ID: record.Employee_ID }),
+                  })
+                    .then((data) => {
+                      console.log("success");
                     })
-                      .then((data) => {
-                        console.log("success");
-                      })
-                      .catch((error) => {
-                        console.log("error");
-                      });
-                  }}
-                  style={{ marginRight: "5px" }}
-                >
-                  View
-                </button>
-              </Link>
-              <Link
-                to="/login/Employee/ManUI/EditEmployee"
-                style={{ color: "white" }}
+                    .catch((error) => {
+                      console.log("error");
+                    });
+                }}
+                style={{ marginRight: "5px" }}
               >
-                <button
-                  className="btn btn-warning"
-                  onClick={() => {
-                    fetch("http://localhost:5000/api/send-employee-id", {
-                      method: "POST",
-                      headers: {
-                        "Content-Type": "application/json",
-                      },
-                      body: JSON.stringify({ Employee_ID: record.Employee_ID }),
+                View
+              </button>
+            </Link>
+            <Link
+              to="/login/Employee/ManUI/EditEmployee"
+              style={{ color: "white" }}
+            >
+              <button
+                className="btn btn-warning"
+                onClick={() => {
+                  fetch("http://localhost:5000/api/send-employee-id", {
+                    method: "POST",
+                    headers: {
+                      "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ Employee_ID: record.Employee_ID }),
+                  })
+                    .then((data) => {
+                      console.log("success");
                     })
-                      .then((data) => {
-                        console.log("success");
-                      })
-                      .catch((error) => {
-                        console.log("error");
-                      });
-                  }}
-                >
-                  Edit
-                </button>
-              </Link>
-            </tr>
+                    .catch((error) => {
+                      console.log("error");
+                    });
+                }}
+              >
+                Edit
+              </button>
+            </Link>
           </div>
         ))}
         <div style={{ display: "flex", justifyContent: "center" }}>

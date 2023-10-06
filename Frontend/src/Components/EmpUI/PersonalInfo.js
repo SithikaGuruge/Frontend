@@ -53,7 +53,6 @@ const PersonalInfo = () => {
             <tr key={i}>
               <h5>Employee ID : {record.Employee_ID}</h5>
               <h5>Name : {record.Name}</h5>
-              <h5>Organization Name :{record.Organization_Name}</h5>
               <h5>
                 Birthdate : {new Date(record.Birthdate).toLocaleDateString()}
               </h5>
