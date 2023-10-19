@@ -7,7 +7,7 @@ const ViewEmployee = () => {
   };
   const [record, setRecord] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/api/employeeInfo/employee")
+    fetch("http://localhost:5001/api/employeeInfo/employee")
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
@@ -21,7 +21,7 @@ const ViewEmployee = () => {
         <h1 style={{ marginBottom: "20px", marginTop: "20px" }}>
           Personal Informations
         </h1>
-        {record.map((record, i) => (
+        {record.map((record) => (
           <div
             style={{
               border: "2px solid black",
@@ -36,23 +36,22 @@ const ViewEmployee = () => {
               // Center children horizontally
             }}
           >
-            <tr key={i}>
-              <h5>Employee ID : {record.Employee_ID}</h5>
-              <h5>Name : {record.Name}</h5>
-              <h5>Organization Name :{record.Organization_Name}</h5>
-              <h5>
-                Birthdate : {new Date(record.Birthdate).toLocaleDateString()}
-              </h5>
-              <h5>Marital Status : {record.Marital_status}</h5>
-              <h5>
-                Emergency Contact Number : {record.Emergency_contact_Number}
-              </h5>
-              <h5>Status Type : {record.Status_Type}</h5>
-              <h5>Job Title : {record.Job_Title}</h5>
-              {record.Supervisor_Name !== null && (
-                <h5>Supervisor_Name: {record.Supervisor_Name}</h5>
-              )}
-            </tr>
+            <h5>Employee ID : {record.Employee_ID}</h5>
+            <h5>Name : {record.Name}</h5>
+            <h5>
+              Birthdate : {new Date(record.Birthdate).toLocaleDateString()}
+            </h5>
+            <h5>Marital Status : {record.Marital_status}</h5>
+            <h5>
+              Emergency Contact Number : {record.Emergency_contact_Number}
+            </h5>
+            <h5>Status Type : {record.Status_Type}</h5>
+            <h5>Job Title : {record.Job_Title}</h5>
+            <h5>Pay Grade : {record.Pay_Grade}</h5>
+
+            {record.Supervisor_Name !== null && (
+              <h5>Supervisor_Name: {record.Supervisor_Name}</h5>
+            )}
           </div>
         ))}
 

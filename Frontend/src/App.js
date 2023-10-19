@@ -1,21 +1,22 @@
 import React from "react";
 import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Login from "./Components/login";
 import About from "./Components/about";
 import Dashboard from "./Components/dashboard";
 import Employee from "./Components/Employee/Employee";
-import Admin from "./Components/Admin/Admin";
+
 import ManUI from "./Components/ManUI/ManUI";
 import EmployeeUI from "./Components/EmpUI/EmployeeUI";
 import SupervisorUI from "./Components/SupervisorUI/SupervisorUI";
 import PersonalInfo from "./Components/EmpUI/PersonalInfo";
 import AdminUI from "./Components/Admin/AdminUi";
-import AccountantUI from "./Components/Accountant/AccUI";
 import AddEmployee from "./Components/ManUI/AddEmployee";
 import EmployeeInfo from "./Components/ManUI/EmployeeInfo";
 import ViewEmployee from "./Components/ManUI/ViewEmployee";
 import EditEmployee from "./Components/ManUI/EditEmployee";
+import LeaveRequest from "./Components/EmpUI/LeaveRequest";
+import LoginUI from "./Components/login";
+import AddHRManager from "./Components/Admin/AddHrManager";
 
 import EditPI from "./Components/ManUI/EditPI";
 function App() {
@@ -25,25 +26,36 @@ function App() {
         <div>
           <Routes>
             <Route exact path="/" element={<Dashboard />}></Route>
-            <Route path="/login" element={<Login />}></Route>
+            <Route path="/login" element={<Employee />}></Route>
             <Route path="/about" element={<About />}></Route>
-            <Route path="/login/Employee" element={<Employee />}></Route>
-            <Route path="/login/Admin" element={<Admin />}></Route>
-            <Route path="/login/Employee:JT001" element={<ManUI />}></Route>
+            <Route path="/login/Employee:JT001" element={<AdminUI />}></Route>
+            <Route path="/login/Employee:JT002" element={<ManUI />}></Route>
             <Route
-              path="/login/Employee:JT002"
+              path="/login/Employee:JT003"
               element={<SupervisorUI />}
             ></Route>
             <Route
-              path="/login/Employee:JT003"
-              element={<AccountantUI />}
+              path="/login/Employee:JT004"
+              element={<SupervisorUI />}
             ></Route>
             <Route
-              path="/login/Employee:JT004"
-              element={<EmployeeUI />}
+              path="/login/Employee:JT009"
+              element={<SupervisorUI />}
             ></Route>
             <Route
               path="/login/Employee:JT005"
+              element={<SupervisorUI />}
+            ></Route>
+            <Route
+              path="/login/Employee:JT006"
+              element={<EmployeeUI />}
+            ></Route>
+            <Route
+              path="/login/Employee:JT007"
+              element={<EmployeeUI />}
+            ></Route>
+            <Route
+              path="/login/Employee:JT008"
               element={<EmployeeUI />}
             ></Route>
             <Route
@@ -72,6 +84,15 @@ function App() {
               path="/login/Employee/ManUI/EditEmployee"
               element={<EditEmployee />}
             ></Route>
+            <Route
+              path="/login/Employee/EmployeeUI/request-leave"
+              element={<LeaveRequest />}
+            ></Route>
+            <Route
+              path="/login/Admin/AddHrManager"
+              element={<AddHRManager />}
+            ></Route>
+            <Route path="/login/home" element={<LoginUI />}></Route>
             <Route path="*" element={<h1>Not Found</h1>}></Route>
           </Routes>
         </div>
